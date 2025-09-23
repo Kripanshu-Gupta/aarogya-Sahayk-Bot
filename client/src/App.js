@@ -1,18 +1,29 @@
 import React from 'react';
-import ChatInterface from './components/ChatInterface';
-import { Box, Typography } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import Header from './components/Header';
+import ChatContainer from './components/ChatContainer';
+
+// Define a theme for your app for consistent styling
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+    },
+    secondary: {
+      main: '#4caf50',
+    },
+  },
+});
 
 function App() {
   return (
-    <Box sx={{ textAlign: 'center' }}>
-      <Typography variant="h3" component="h1" sx={{ my: 3, color: 'primary.main' }}>
-        Aarogya Sahayak 🏥
-      </Typography>
-      <Typography variant="h6" component="h2" sx={{ mb: 3, color: 'text.secondary' }}>
-        AI-Driven Public Health Chatbot
-      </Typography>
-      <ChatInterface />
-    </Box>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', bgcolor: '#f4f6f8' }}>
+        <Header />
+        <ChatContainer />
+      </Box>
+    </ThemeProvider>
   );
 }
 
